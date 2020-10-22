@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="mem" class="com.sist.di.Member">
+	 <constructor-arg value="홍길동" index="0"/>
+	 <constructor-arg value="서울" />
+	 <constructor-arg value="010-1111-1111" index="2"/>
+	</bean>
+	<bean id="mem2" class="com.sist.di.Member" 
+		c:name="심청이"
+		c:addr="경기"
+		c:tel="010-2222-2222"
+	/>
+	<bean id="mem3" class="com.sist.di.Member"
+		c:_0="박문수"
+		c:_1="인천"
+		c:_2="010-3333-3333"
+	/>	
+</beans>
