@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:p="http://www.springframework.org/schema/p"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+   <context:component-scan base-package="com.sist.di2"/>
+   
+   <bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
+      p:username="hr"
+      p:password="happy"
+      p:url="jdbc:oracle:thin:@211.238.142.195:1521:XE"
+      p:driverClassName="oracle.jdbc.driver.OracleDriver"
+   />
+
+   <bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean"
+      p:dataSource-ref="ds"
+      p:configLocation="classpath:Config.xml"
+   />
+   <!--
+   		1. 스프링 = 클래스를 관리
+   		   ================
+   		   생성 => 필요한 데이터 첨부(DI) => 소멸
+   		       ===================
+   		       1) 일반 데이터(setter, constructor)
+   		       2) 클래스 자체를 첨부(@Autowired:생성된 클래스 객체의 주소)
+   		 ====
+   		  1) XML로 생성
+   		  	<bean id="" class="">
+   		  2) Annotation으로 생성      
+   		    <context:component-scan base-package="패키지명">
+   		   스프링에 의해서 생성되는 클래스
+   		       = 클래스 위에 Annotation을 사용
+   		       @ Component, @Repository, @Contorller, @RestController, @Service
+   		   프로그래머가 직접 생성하는 클래스  (VO, interface)
+   		   => DI
+   		    = @Auutowired : 스프링에서 자동으로 첨부
+   		    = @Resource : 스프링에 저장되어 있는 객체중에 지정해서 가지고 온다
+   		    
+   		    => 스프링에서 미리 생성되어 있는 클래스 객체 주소를 이용할 떄 사용
+   		    
+   		    => 기능이 있는 모든 클래스는 스프링에 맡긴다
+   		              필요시마다 스프링을 통해서 얻어온다
+   		       
+   		    => @Autowired , @Resource(name="b")를 사용하기 위해서 반드시
+   		              스프링에서 메모리 할당을 해야 사용할 수 있다
+    -->
+
+</beans>
