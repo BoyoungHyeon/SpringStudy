@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<tiles-difinitions>
+	<difinitions name="main" template="/WEB-INF/main/main.jsp">
+		<put-attribute name="header" value="/WEB-INF/main/header.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/main/content.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/main/footer.jsp"/>
+	</difinitions>
+</tiles-difinitions>
