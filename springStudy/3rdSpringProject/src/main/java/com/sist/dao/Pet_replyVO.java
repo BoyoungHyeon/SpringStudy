@@ -3,7 +3,7 @@ package com.sist.dao;
 import java.util.*;
 
 public class Pet_replyVO {
-	private int no,diary_no,gi,gs,gt,root,depth;
+	private int no,pet_no,gi,gs,gt,root,depth;
 	private String id,content,msg;
 	private Date regdate;
 	public int getNo() {
@@ -12,11 +12,11 @@ public class Pet_replyVO {
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public int getDiary_no() {
-		return diary_no;
+	public int getPet_no() {
+		return pet_no;
 	}
-	public void setDiary_no(int diary_no) {
-		this.diary_no = diary_no;
+	public void setPet_no(int pet_no) {
+		this.pet_no = pet_no;
 	}
 	public int getGi() {
 		return gi;
@@ -72,4 +72,5 @@ public class Pet_replyVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+	
 }

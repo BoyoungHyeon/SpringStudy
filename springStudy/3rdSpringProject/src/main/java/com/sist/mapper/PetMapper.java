@@ -8,9 +8,10 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
-import com.sist.dao.Diary_replyVO;
+
 import com.sist.dao.PetVO;
 import com.sist.dao.Pet_replyVO;
+import com.sist.dao.Pet_scrapVO;
 
 public interface PetMapper {
 	// 반려동물 list
@@ -85,12 +86,12 @@ public interface PetMapper {
 	public void pet_replyReplyInsert(Pet_replyVO vo);
 		
 		
-	// 부모댓글 depth 증가 ======================================================================================================================================
+	// 부모댓글 depth 증가 
 	@Update("UPDATE pet_reply SET depth = depth + 1 WHERE no=#{no}")
 	public void pet_replyDepthIncrement(int no);
 		
 		
-	// 댓글 수정 ========================================================================================================================================
+	// 댓글 수정
 	@Update("UPDATE pet_reply SET content = #{content} WHERE no = #{no}")
 	public void pet_updateReply(Pet_replyVO vo);
 		
@@ -114,5 +115,26 @@ public interface PetMapper {
 	// 부모댓글의 depth 감소 ========================================================================================================================================
 	@Update("UPDATE pet_reply SET depth = depth - 1 WHERE no = #{no}")
 	public void pet_depthDecrement(int no);
+	
+	
+	
+	
+	
+	
+	// 스크랩 저장
+	@Insert("INSERT INTO pet_scrap VALUES((SELECT NVL(MAX(no)+1,1) FROM pet_Scrap), #{id}, #{pno})")
+	public void scrap_insert(Pet_scrapVO vo);
+		
+	// 스크랩 리스트 가져오기 
+	@Select("SELECT * FROM pet_scrap WHERE id = #{id} ORDER BY no DESC")
+	public List<Pet_scrapVO> scrapListData(String id);
+		
+	// 스크랩 여부 확인
+	@Select("SELECT COUNT(*) FROM pet_scrap WHERE id = #{id} AND pno = #{pno}")
+	public int scrapCount(Pet_scrapVO vo);
+		
+	// 스크랩 취소
+	@Delete("DELETE FROM pet_scrap WHERE no = #{no}")
+	public void scrapDelete(int no);
 		
 }

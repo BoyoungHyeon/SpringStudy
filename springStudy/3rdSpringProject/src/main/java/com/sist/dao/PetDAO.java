@@ -129,8 +129,26 @@ public class PetDAO {
 			
 		}
 
+		
+		// ½ºÅ©·¦ =============================================================================================================================================
+		
+		// ½ºÅ©·¦ÇÏ±â
+		public void scrapInsert(Pet_scrapVO vo){
+			mapper.scrap_insert(vo);
+		}
 
-}
+		// ½ºÅ©·¦¸ñ·Ï °¡Á®¿À±â
+		public List<Pet_scrapVO> scrapListData(String id){
+			return mapper.scrapListData(id);
+		}
 
-	
-	
+		// ½ºÅ©·¦ ¿©ºÎ È®ÀÎ
+		public int scrapCount(Pet_scrapVO vo){
+			return mapper.scrapCount(vo);
+		}
+
+		// ½ºÅ©·¦ Ãë¼Ò
+		public void scrapDelete(int no){
+			mapper.scrapDelete(no);
+		} 
+	}
